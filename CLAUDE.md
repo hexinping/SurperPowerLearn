@@ -127,3 +127,7 @@ IDENTIFY → RUN → READ → VERIFY → CLAIM
 ```
 C:\Users\CM640\.claude\plugins\cache\claude-plugins-official\superpowers\5.0.7\
 ```
+
+## Git 提交规范
+
+- 提交日志使用中文编写
