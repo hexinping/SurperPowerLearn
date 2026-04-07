@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 from sqlalchemy import Boolean, DateTime, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column
@@ -13,5 +13,5 @@ class TodoItem(Base):
     title: Mapped[str] = mapped_column(String(200), nullable=False)
     completed: Mapped[bool] = mapped_column(Boolean, default=False)
     created_at: Mapped[datetime] = mapped_column(
-        DateTime, default=datetime.utcnow
+        DateTime, default=lambda: datetime.now(timezone.utc)
     )
