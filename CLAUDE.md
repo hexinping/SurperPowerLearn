@@ -65,6 +65,12 @@ brainstorming → worktree → writing-plans → subagent-driven-dev → verific
     设计          环境          计划             实施               验证           收尾
 ```
 
+**不可跳过 worktree 和 finish-branch！** 这是之前犯过的错误：直接在 main 分支开发，跳过了 worktree 隔离和 finish-branch 收尾。正确做法：
+
+1. brainstorming 完成后，**必须**用 `using-git-worktrees` 创建特性分支（如 `feature/xxx`）
+2. 所有开发在 worktree 中进行，main 保持干净
+3. 全部完成后，**必须**用 `finishing-a-development-branch` 选择合并/PR/保留/丢弃
+
 ## 关键工作流规则
 
 ### TDD 循环

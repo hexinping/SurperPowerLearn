@@ -10,3 +10,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+todo-api/tests/__pycache__/
+todo-api/todo_api/__pycache__/
