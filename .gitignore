@@ -12,3 +12,4 @@ $RECYCLE.BIN/
 *.lnk
 todo-api/tests/__pycache__/
 todo-api/todo_api/__pycache__/
+.worktrees/
