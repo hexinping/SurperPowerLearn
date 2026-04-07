@@ -9,6 +9,12 @@ def test_create_todo(db_session):
     assert todo.id is not None
     assert todo.title == "Test item"
     assert todo.completed is False
+    assert todo.description is None
+
+
+def test_create_todo_with_description(db_session):
+    todo = create_todo(db_session, TodoCreate(title="Test", description="Some details"))
+    assert todo.description == "Some details"
 
 
 def test_get_todos(db_session):

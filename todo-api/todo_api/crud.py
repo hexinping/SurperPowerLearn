@@ -5,7 +5,7 @@ from todo_api.schemas import TodoCreate, TodoUpdate
 
 
 def create_todo(db: Session, data: TodoCreate) -> TodoItem:
-    todo = TodoItem(title=data.title)
+    todo = TodoItem(title=data.title, description=data.description)
     db.add(todo)
     db.commit()
     db.refresh(todo)

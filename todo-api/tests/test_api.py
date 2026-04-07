@@ -4,8 +4,16 @@ def test_create_todo(client):
     data = response.json()
     assert data["title"] == "Buy milk"
     assert data["completed"] is False
+    assert data["description"] is None
     assert "id" in data
     assert "created_at" in data
+
+
+def test_create_todo_with_description(client):
+    response = client.post("/todos", json={"title": "Buy milk", "description": "2% milk from Costco"})
+    assert response.status_code == 201
+    data = response.json()
+    assert data["description"] == "2% milk from Costco"
 
 
 def test_create_todo_empty_title(client):
@@ -25,11 +33,12 @@ def test_get_todos(client):
 def test_update_todo(client):
     create_resp = client.post("/todos", json={"title": "Old"})
     todo_id = create_resp.json()["id"]
-    response = client.put(f"/todos/{todo_id}", json={"title": "New", "completed": True})
+    response = client.put(f"/todos/{todo_id}", json={"title": "New", "completed": True, "description": "Updated desc"})
     assert response.status_code == 200
     data = response.json()
     assert data["title"] == "New"
     assert data["completed"] is True
+    assert data["description"] == "Updated desc"
 
 
 def test_update_todo_not_found(client):

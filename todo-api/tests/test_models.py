@@ -12,3 +12,13 @@ def test_todo_item_creation(db_session):
     assert todo.title == "Buy milk"
     assert todo.completed is False
     assert todo.created_at is not None
+    assert todo.description is None
+
+
+def test_todo_item_with_description(db_session):
+    todo = TodoItem(title="Buy milk", description="From the store nearby")
+    db_session.add(todo)
+    db_session.commit()
+    db_session.refresh(todo)
+
+    assert todo.description == "From the store nearby"
